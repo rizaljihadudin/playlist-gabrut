@@ -66,16 +66,20 @@
           "Serena-ForRevenge",
           "TakSegampangItu-AnggiMarito",
           "Trauma-ElsyaAanStory",
+          "Sial-Mahalini"
         ],
 
         img: [
           "serena.jpg",
           "zz.jpg",
           "xxx.jpg",
+          "xxs.jpg"
         ],
       };
 
       var value = 0;
+      var count = parseInt(listmusik.name.length) - 1;
+      
 
       function show() {
         $("#display")
@@ -90,14 +94,14 @@
       // next
 
       function nextAudio() {
-        if (value < 2) {
-          value++;
-
-          show();
-
-          pauseAudio();
-
-          audio.currentTime = 0;
+        if (value < count) {
+            value++;
+            show();
+            playAudio();
+            audio.currentTime = 0;
+            if(value == count){
+                value = 0 - 1;
+            }
         }
       }
 
@@ -106,11 +110,8 @@
       function prevAudio() {
         if (value > 0) {
           value--;
-
           show();
-
           pauseAudio();
-
           audio.currentTime = 0;
         }
       }
