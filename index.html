@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>GALAU BRUTAL</title>
+
+    <style>
+      audio {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container text-center">
+      <h1>Playlist GABRUT</h1>
+
+      <div id="display"></div>
+
+      <audio id="audio" controls></audio>
+
+      <button
+        onclick="prevAudio()"
+        type="button"
+        class="btn btn-secondary btn-sm"
+      >
+        Prev
+      </button>
+
+      <button
+        onclick="playAudio()"
+        type="button"
+        class="btn btn-primary btn-sm"
+      >
+        Play
+      </button>
+
+      <button
+        onclick="pauseAudio()"
+        type="button"
+        class="btn btn-danger btn-sm"
+      >
+        Pause
+      </button>
+
+      <button
+        onclick="nextAudio()"
+        type="button"
+        class="btn btn-secondary btn-sm"
+      >
+        Next
+      </button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+      var listmusik = {
+        name: [
+          "Serena-ForRevenge",
+          "TakSegampangItu-AnggiMarito",
+          "Trauma-ElsyaAanStory",
+        ],
+
+        img: [
+          "serena.jpg",
+          "zz.jpg",
+          "xxx.jpg",
+        ],
+      };
+
+      var value = 0;
+
+      function show() {
+        $("#display")
+          .html(`<img src="img/${listmusik.img[value]}" width="200" height="200"/><p>${listmusik.name[value]}</p>`);
+        $("#audio").attr("src", `musik/${listmusik.name[value]}.mp3`);
+      }
+
+      show();
+
+      var audio = document.getElementById("audio");
+
+      // next
+
+      function nextAudio() {
+        if (value < 2) {
+          value++;
+
+          show();
+
+          pauseAudio();
+
+          audio.currentTime = 0;
+        }
+      }
+
+      // prev
+
+      function prevAudio() {
+        if (value > 0) {
+          value--;
+
+          show();
+
+          pauseAudio();
+
+          audio.currentTime = 0;
+        }
+      }
+
+      // play
+
+      function playAudio() {
+        audio.play();
+      }
+
+      // pause
+
+      function pauseAudio() {
+        audio.pause();
+      }
+    </script>
+  </body>
+</html>
